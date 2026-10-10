@@ -30,3 +30,15 @@ running on the same device.
 ## Important
 This is a PRoot-based Linux userland, not a
 separate Linux kernel or bootable ISO.
+
+## Clone the project
+
+Run in Termux:
+
+    pkg install -y git
+    git clone https://github.com/androiduser1346/ChatGPT-Linux.git
+    cd ChatGPT-Linux
+    chmod +x chatgpt-linux
+
+## Important
+Cloning downloads the project files only. It does not download or install the Debian root filesystem automatically.
