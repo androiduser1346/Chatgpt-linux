@@ -1,0 +1,10 @@
+rootfs/
+*.qcow2
+*.iso
+*.img
+*.apk
+*.log
+*.pid
+passwd
+**/passwd
+.git/

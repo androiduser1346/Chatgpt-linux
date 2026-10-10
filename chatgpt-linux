@@ -1,0 +1,25 @@
+#!/data/data/com.termux/files/usr/bin/bash
+case "${1:-start}" in
+  shell)
+    proot-distro login cglinux26
+    ;;
+  start)
+    proot-distro login cglinux26 -- bash -lc '
+      apt update &&
+      apt install -y xfce4 tigervnc-standalone-server dbus-x11 &&
+      mkdir -p ~/.vnc &&
+      printf "#!/bin/sh\nunset SESSION_MANAGER\nunset DBUS_SESSION_BUS_ADDRESS\nexec dbus-launch --exit-with-session startxfce4\n" > ~/.vnc/xstartup &&
+      chmod +x ~/.vnc/xstartup &&
+      tigervncserver :1 -localhost no
+    '
+    ;;
+  stop)
+    proot-distro login cglinux26 -- tigervncserver -kill :1
+    ;;
+  status)
+    proot-distro list
+    ;;
+  *)
+    echo "Usage: chatgpt-linux {start|stop|shell|status}"
+    ;;
+esac
